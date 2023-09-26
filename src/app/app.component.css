@@ -1,0 +1,13 @@
+.sidebar{
+    left: 0;
+    width: 40%;
+    max-width: 40%;
+    height: 75vh;
+    max-height: 75vh;
+    overflow: auto;
+    background-color: rgb(48, 68, 250);
+}
+
+::-webkit-scrollbar{
+    width: 0;
+}
