@@ -1,0 +1,51 @@
+.bottom-holder{
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px;
+    color: black;
+
+}
+
+.thumb{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    align-items: center;
+    color: black;
+}
+
+.thumb label{
+    align-items: center;
+    color: black;
+}
+
+mat-icon{
+    color: black;
+    font-size: 25px;
+
+}
+
+.btn-controls{
+    background-color: transparent;
+    border: 0px;
+}
+
+.btn-controls:hover{
+    color: black;
+    background-color: rgb(177, 177, 177);
+    border-radius: 5px;
+}
+
+.bottom-control{
+    display: flex;
+    color: black;
+    flex-direction: row;
+    max-width: 100%;
+    justify-content: space-between;
+    padding: 0px 40px;
+}
+
+mat-slider{
+    width: 5000px;
+}
