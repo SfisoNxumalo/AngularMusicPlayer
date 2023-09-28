@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { AudioServiceService } from '../audio-service.service';
+import { AudioService } from '../audio.service';
 
 @Component({
   selector: 'app-audio-player',
@@ -9,7 +9,7 @@ import { AudioServiceService } from '../audio-service.service';
 })
 export class AudioPlayerComponent {
 
-  constructor(private audioService: AudioServiceService){}
+  constructor(private audioService : AudioService){}
 
     playAudio(url: string )
     {

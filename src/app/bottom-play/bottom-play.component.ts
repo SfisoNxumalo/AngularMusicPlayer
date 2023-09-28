@@ -2,13 +2,16 @@ import { Component } from '@angular/core';
 import { AudioService } from '../audio.service';
 
 
-
+const audio_api = "https://localhost:3000/api/songs"
 
 @Component({
   selector: 'app-bottom-play',
   templateUrl: './bottom-play.component.html',
   styleUrls: ['./bottom-play.component.css'],
 })
+
+
+
 
 export class BottomPlayComponent {
 
@@ -21,7 +24,7 @@ export class BottomPlayComponent {
     this.num++;
     console.log(this.num);
   }
-  // aud = new Audio(audio_api+"getSongs")
+   audio = new Audio(audio_api+"getSongs")
   //  aud = new Audio("https://d201.d2mefast.net/tb/9/e8/nasty_c_endless_official_video_mp3_46042.mp3?play");
   //  aud = new Audio("https://d216.d2mefast.net/tb/8/e7/lil_durk_all_my_life_ft._j._cole_official_video_mp3_47620.mp3?play");
    AudioDuration = "00:00";
@@ -32,6 +35,8 @@ export class BottomPlayComponent {
   //  AudioCurrentTime = this.ACTimeM + ":" + this.ACTimeS;
 
   mPlayOrPause(){
+
+    
 
     if(!this.songCondition){
      

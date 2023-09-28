@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 // import { catchError, map, tap } from 'rxjs/operators';
 
 
-const audio_api = "https://localhost:3000/api/songs"
+const audio_api = "https://localhost:3000/api/"
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +23,15 @@ export class AudioService {
   }
   getAllSongs(){
     
-    return this.http.get<any[]>(audio_api+"getSongs")
+    return this.http.get<any[]>(audio_api+ "songs")
   }
+  
+
+  
+
+  getAudioUrl(url:string){
+    return this.http.get<string>(`http://localhost:3000/api/song/${url}`);
+  }
+
+  
 }
