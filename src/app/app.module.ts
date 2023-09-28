@@ -9,14 +9,18 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { BottomPlayComponent } from './bottom-play/bottom-play.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from '@angular/material/slider';
-import {MatIconModule} from '@angular/material/icon'
+import {MatIconModule} from '@angular/material/icon';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
+import { SongsComponent } from './songs/songs.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SidebarComponent,
-    BottomPlayComponent
+    BottomPlayComponent,
+    AudioPlayerComponent,
+    SongsComponent
   ],
   imports: [
     BrowserModule,
