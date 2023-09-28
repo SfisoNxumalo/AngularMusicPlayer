@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { AudioService } from '../audio.service';
+
+
 
 
 @Component({
   selector: 'app-bottom-play',
   templateUrl: './bottom-play.component.html',
-  styleUrls: ['./bottom-play.component.css']
+  styleUrls: ['./bottom-play.component.css'],
 })
 
 export class BottomPlayComponent {
@@ -18,8 +21,8 @@ export class BottomPlayComponent {
     this.num++;
     console.log(this.num);
   }
-
-   aud = new Audio("https://d201.d2mefast.net/tb/9/e8/nasty_c_endless_official_video_mp3_46042.mp3?play");
+  // aud = new Audio(audio_api+"getSongs")
+  //  aud = new Audio("https://d201.d2mefast.net/tb/9/e8/nasty_c_endless_official_video_mp3_46042.mp3?play");
   //  aud = new Audio("https://d216.d2mefast.net/tb/8/e7/lil_durk_all_my_life_ft._j._cole_official_video_mp3_47620.mp3?play");
    AudioDuration = "00:00";
    audD = 0;
@@ -33,14 +36,14 @@ export class BottomPlayComponent {
     if(!this.songCondition){
      
       this.songCondition = true
-      this.aud.play();
-      this.AudioDuration = this.mGetAudioDuration(this.aud);
-      this.mGetAudioCurrentTime(this.aud);
-      this.audD = this.aud.duration;
+      this.audio.play();
+      this.AudioDuration = this.mGetAudioDuration(this.audio);
+      this.mGetAudioCurrentTime(this.audio);
+      this.audD = this.audio.duration;
       this.songCon = "pause"
     }
     else{
-      this.aud.pause();
+      this.audio.pause();
       this.songCondition = false;
       this.songCon = "play_arrow";
     }
