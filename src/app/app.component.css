@@ -5,12 +5,13 @@
     height: 75vh;
     max-height: 75vh;
     overflow: auto;
-    background-color: rgb(48, 68, 250);
+    /* background-color: rgb(48, 68, 250); */
+    
 }
 
-.bottom{
+/* .bottom{
 
-}
+} */
 
 ::-webkit-scrollbar{
     width: 0;

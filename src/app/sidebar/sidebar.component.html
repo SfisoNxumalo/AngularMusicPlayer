@@ -1,7 +1,17 @@
 <div class="©">
+    <div class="row">
+    <div class="card text-center" *ngFor="let song of songs">
 
-    <div *ngFor="let song of songs">
         <div class="song-item">
+            <img src="{{song.image}}">
+
+              <div class="card-tittle">
+                <label class="card-title"> {{song.Artist}}</label>
+                <label class="card-title">{{song.title}}</label>
+                
+              </div>
+          
+        <!-- <div class="song-item">
             <img src="{{song.image}}">
 
             <div class="track-title">
@@ -12,5 +22,5 @@
         <hr>
         
 
-    </div>
+    </div> -->
 </div>
