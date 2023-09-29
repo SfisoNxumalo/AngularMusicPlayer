@@ -49,3 +49,8 @@ mat-icon{
 mat-slider{
     width: 5000px;
 }
+
+.loop{
+    fill: blue;
+    color: blue;
+}

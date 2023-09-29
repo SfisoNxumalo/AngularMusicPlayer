@@ -2,8 +2,8 @@
 
     <div class="thumb">
         <label>{{ACTimeM}}:{{ACTimeS}}</label>
-        <mat-slider min="0" [max]="audD" step="0.1">
-            <input matSliderThumb [(ngModel)] = "num">
+        <mat-slider min="0" [max]="audD" step="0.1" >
+            <input #sliderV matSliderThumb (dragEnd)="mDragged(sliderV)" [(ngModel)] = "num">
         </mat-slider>
 
         <label>{{AudioDuration}}</label>
@@ -11,14 +11,14 @@
 
     <div class="bottom-control">
         <div>
-            <button type="button" class="btn-controls"><mat-icon>repeat</mat-icon></button>
+            <button type="button" class="btn-controls loop" (click)="mLoop()"><mat-icon>{{loopSongIco}}</mat-icon></button>
         </div>
     
         <div class="audio-control">
             
             <button type="button" class="btn-controls"><mat-icon>skip_previous</mat-icon></button>
             <button type="button" class="btn-controls" (click)="mPlayOrPause()"><mat-icon>{{songCon}}</mat-icon></button>
-            <button type="button" class="btn-controls" (click)="mMoveSlider($event)"><mat-icon>skip_next</mat-icon></button>
+            <button type="button" class="btn-controls" ><mat-icon>skip_next</mat-icon></button>
 
         </div>
     

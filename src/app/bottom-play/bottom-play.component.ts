@@ -9,20 +9,51 @@ import { Component } from '@angular/core';
 
 export class BottomPlayComponent {
 
-  songCondition = false;
-  songCon = "play_arrow"
-
-  num = 0;
-
-  mMoveSlider($event: any) {
-    this.num++;
-    console.log(this.num);
-  }
-
-   aud = new Audio("https://d201.d2mefast.net/tb/9/e8/nasty_c_endless_official_video_mp3_46042.mp3?play");
+  //  aud = new Audio("https://d201.d2mefast.net/tb/9/e8/nasty_c_endless_official_video_mp3_28738.mp3?play");
+   aud = new Audio("https://d289.d2mefast.net/tb/e/93/cassper_nyovest_phumakim_official_music_video_mp3_33219.mp3?play");
   //  aud = new Audio("https://d216.d2mefast.net/tb/8/e7/lil_durk_all_my_life_ft._j._cole_official_video_mp3_47620.mp3?play");
    AudioDuration = "00:00";
    audD = 0;
+
+   songCondition = false;
+   loopSong = false;
+   songCon = "play_arrow"
+   loopSongIco = "repeat"
+ 
+   num = 0;
+  count = 0;
+   mDragged(event: any){
+    this.aud.currentTime = event.value;
+    this.num = this.aud.currentTime;
+
+    
+    let cur = "00";
+
+    let curr = Number(this.aud.currentTime.toFixed(0));
+    
+      this.count++;
+
+      if(curr % 60 == 0){
+
+        this.count = 0;
+        let out = String(curr / 60);
+
+        if(out.length < 2){
+            out = "0"+ out;
+        }
+
+        this.ACTimeM = out;
+      }
+
+      if(this.count < 10){
+        cur = "0" + this.count
+      }
+      else{
+        cur = String(this.count);
+      }
+
+        this.ACTimeS = cur;
+   }
 
    ACTimeM = "00"
    ACTimeS = "00"
@@ -46,43 +77,68 @@ export class BottomPlayComponent {
     }
   }
 
+  mLoop(){
+    if(this.loopSong){
+      this.loopSongIco = "repeat"
+      this.loopSong = false;
+      this.aud.loop = false;
+    }
+    else{
+      this.loopSongIco = "repeat_one"
+      this.loopSong = true;
+      this.aud.loop = true;
+    }
+
+  }
+
   mGetAudioDuration(audio:any):string{
     let duration = (Number(audio.duration) / 60).toFixed(2);
     return duration.replace(".", ":");
   }
 
+
+
   mGetAudioCurrentTime(audio:any){
 
-    let count = 0;
     let cur = "00";
 
-    setInterval(() => {
-      this.num = audio.currentTime;
+    let time = setInterval(() => {
+      this.num = audio.currentTime;     
 
-      let curr = audio.currentTime.toFixed(0);
-      count++;
+      this.count++;
 
-      if(curr % 60 == 0){
-
-        count = 0;
-        let out = String(curr / 60);
-
-        if(out.length < 2){
-            out = "0"+ out;
+      if(!this.songCondition){clearInterval(time);}
+        if(audio.ended)
+        {
+          clearInterval(time);
+          this.songCondition = false;
+          this.songCon = "play_arrow";
+          this.count = 0;
+          cur = "00";
         }
 
-        this.ACTimeM = out;
-      }
+        let curr = audio.currentTime.toFixed(0);
 
-        if(count < 10){
-          cur = "0" + count
+        if(curr % 60 == 0){
+
+          this.count = 0;
+          let out = String(curr / 60);
+
+          if(out.length < 2){
+              out = "0"+ out;
+          }
+
+          this.ACTimeM = out;
+        }
+
+        if(this.count < 10){
+          cur = "0" + this.count
         }
         else{
-          cur = String(count);
+          cur = String(this.count);
         }
 
-        this.ACTimeS = cur;
-      
+          this.ACTimeS = cur;
 
     },1000);
   }
