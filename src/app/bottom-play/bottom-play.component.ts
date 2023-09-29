@@ -72,14 +72,14 @@ export class BottomPlayComponent {
     if(!this.songCondition){
      
       this.songCondition = true
-      this.audio.play();
-      this.AudioDuration = this.mGetAudioDuration(this.audio);
-      this.mGetAudioCurrentTime(this.audio);
-      this.audD = this.audio.duration;
+      this.aud.play();
+      this.AudioDuration = this.mGetAudioDuration(this.aud);
+      this.mGetAudioCurrentTime(this.aud);
+      this.audD = this.aud.duration;
       this.songCon = "pause"
     }
     else{
-      this.audio.pause();
+      this.aud.pause();
       this.songCondition = false;
       this.songCon = "play_arrow";
     }
