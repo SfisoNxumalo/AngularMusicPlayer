@@ -1,0 +1,76 @@
+.div-view{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.div-table{
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 355px;
+    overflow: auto;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.15);
+}
+
+.div-table::-webkit-scrollbar{
+width: 0 !important	;
+}
+
+.div-table table{
+    
+    border: 0px;
+    border-style: none;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+
+
+}
+
+.div-table table thead{
+    border-style: none;
+    /* background-color: #4F94CD; */
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(32,32,66,1) 35%, rgba(0,212,255,1) 100%);
+    color: white;
+    font-size: 15px;
+    border: 0px;
+    position: sticky;
+    top: 0px;
+}
+
+.div-table table thead th{
+    padding: 10px;
+
+}
+
+th:nth-child(1){
+    border-radius: 8px 0px 0 0;
+}
+
+th:nth-child(6){
+    border-radius: 0px 8px 0 0;
+}
+
+.div-table table tbody tr{
+    padding: 8px;
+}
+
+.div-table table tbody tr a{
+    width: 100%;
+    background-color: #4F94CD;
+}
+
+.div-table table tbody tr:nth-of-type(even){
+   background-color: whitesmoke;
+}
+
+.div-table table tbody tr:hover{
+    background-color: rgb(209, 206, 206);
+    cursor: pointer;
+}
+
+.div-table table tbody td{
+    padding: 8px;
+}

@@ -3,6 +3,7 @@
     flex-direction: column;
     padding: 5px 10px;
     color: black;
+    background-color: #9f7657;
 
 }
 
@@ -33,7 +34,8 @@ mat-icon{
 
 .btn-controls:hover{
     color: black;
-    background-color: rgb(177, 177, 177);
+    /* background-color: rgb(177, 177, 177); */
+    background-color: #b67f56;
     border-radius: 5px;
 }
 
@@ -44,6 +46,8 @@ mat-icon{
     max-width: 100%;
     justify-content: space-between;
     padding: 0px 40px;
+    background-color: #b67f56;
+    
 }
 
 mat-slider{

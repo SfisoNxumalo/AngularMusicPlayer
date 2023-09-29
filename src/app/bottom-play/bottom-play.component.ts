@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
+import { AudioService } from '../audio.service';
 
+
+const audio_api = "https://localhost:3000/api/songs"
 
 @Component({
   selector: 'app-bottom-play',
   templateUrl: './bottom-play.component.html',
-  styleUrls: ['./bottom-play.component.css']
+  styleUrls: ['./bottom-play.component.css'],
 })
+
+
+
 
 export class BottomPlayComponent {
 
@@ -61,17 +67,19 @@ export class BottomPlayComponent {
 
   mPlayOrPause(){
 
+    
+
     if(!this.songCondition){
      
       this.songCondition = true
-      this.aud.play();
-      this.AudioDuration = this.mGetAudioDuration(this.aud);
-      this.mGetAudioCurrentTime(this.aud);
-      this.audD = this.aud.duration;
+      this.audio.play();
+      this.AudioDuration = this.mGetAudioDuration(this.audio);
+      this.mGetAudioCurrentTime(this.audio);
+      this.audD = this.audio.duration;
       this.songCon = "pause"
     }
     else{
-      this.aud.pause();
+      this.audio.pause();
       this.songCondition = false;
       this.songCon = "play_arrow";
     }
