@@ -1,20 +1,69 @@
+
+
 .sidebar{
+    
     left: 0;
     width: 20%;
     max-width: 40%;
     height: 75vh;
     max-height: 75vh;
+    box-shadow: 0px 8px 20px -6px rgba(0,0,0,0.22);
+
+    
     overflow: auto;
     /* background-color: rgb(48, 68, 250); */
     
 }
 
+.track-holder{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.Track-details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.clsArtist, .clsTitle{
+    color: black;
+}
+
+.clsArtist{
+    font-size: 38px;
+    font-weight: bolder;
+}
+
+.clsTitle{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+
+
 /* .bottom{
 
+    position: fixed; 
+    bottom: 0;
 } */
 
 ::-webkit-scrollbar{
     width: 0;
+}
+
+.current-track{
+    color: black;
+    flex-basis: 80%;
+    padding: 20px;
+
+}
+
+.Track-image img{
+
+    border-radius: 10px;
+
 }
 
 @media only screen and (max-width:700px) {
@@ -25,6 +74,6 @@
         height: 75vh;
         max-height: 75vh;
         overflow: auto;
-        background-color: rgb(48, 68, 250);
+        background-color: white;
     }
 }

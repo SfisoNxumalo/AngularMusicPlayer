@@ -16,22 +16,29 @@ const audio_api = "https://localhost:3000/api/songs"
 export class BottomPlayComponent {
 
   //  aud = new Audio("https://d201.d2mefast.net/tb/9/e8/nasty_c_endless_official_video_mp3_28738.mp3?play");
-   aud = new Audio("https://d289.d2mefast.net/tb/e/93/cassper_nyovest_phumakim_official_music_video_mp3_33219.mp3?play");
+   aud = new Audio("https://d252.d2mefast.net/tb/8/9c/dlala_thukzin_iplan_ft_zaba_sykes_official_audio_mp3_47229.mp3?play");
   //  aud = new Audio("https://d216.d2mefast.net/tb/8/e7/lil_durk_all_my_life_ft._j._cole_official_video_mp3_47620.mp3?play");
    AudioDuration = "00:00";
    audD = 0;
 
    songCondition = false;
+
    loopSong = false;
+   loopClass = ""
+
+   FavouriteSong = false;
+   heartClass = "";
+
+
    songCon = "play_arrow"
    loopSongIco = "repeat"
  
    num = 0;
   count = 0;
+
    mDragged(event: any){
     this.aud.currentTime = event.value;
     this.num = this.aud.currentTime;
-
     
     let cur = "00";
 
@@ -67,8 +74,6 @@ export class BottomPlayComponent {
 
   mPlayOrPause(){
 
-    
-
     if(!this.songCondition){
      
       this.songCondition = true
@@ -90,11 +95,14 @@ export class BottomPlayComponent {
       this.loopSongIco = "repeat"
       this.loopSong = false;
       this.aud.loop = false;
+      
+      this.loopClass = ""
     }
     else{
       this.loopSongIco = "repeat_one"
       this.loopSong = true;
       this.aud.loop = true;
+      this.loopClass = "loop"
     }
 
   }
@@ -103,8 +111,6 @@ export class BottomPlayComponent {
     let duration = (Number(audio.duration) / 60).toFixed(2);
     return duration.replace(".", ":");
   }
-
-
 
   mGetAudioCurrentTime(audio:any){
 
@@ -149,6 +155,25 @@ export class BottomPlayComponent {
           this.ACTimeS = cur;
 
     },1000);
+  }
+
+  favIco = "favorite_border"
+
+  mFavourite(){
+
+    if(!this.FavouriteSong){
+      this.favIco = "favorite";
+      this.FavouriteSong = true;
+      this.heartClass = "heart"
+
+    }
+    else{
+      this.favIco = "favorite_border";
+      this.FavouriteSong = false;
+      this.heartClass = "";
+
+    }
+
   }
 
   
