@@ -1,13 +1,11 @@
 .sidebar-div{
 
-    /* background-color: rgb(66, 84, 253); */
-    background-color: #aa8972;
+    background-color: rgb(66, 84, 253);
 }
 
 .song-item{
     max-height: 30px;
-    /* background-color:  rgb(48, 68, 250); */
-    background-color: #aa8972;
+    background-color:  rgb(48, 68, 250);
     padding: 10px 10px;
     display: flex;
     flex-direction: row;
@@ -17,8 +15,7 @@
 }
 
 .song-item:hover{
-    /* background-color: rgb(48, 68, 250); */
-    background-color: black;
+    background-color: rgb(48, 68, 250);
 }
 
 hr{
