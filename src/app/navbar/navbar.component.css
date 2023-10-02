@@ -129,15 +129,33 @@ label{
     flex-direction: column;
     gap: 5px;
     position: relative;
+    flex-basis: 35%;
+    z-index: 1;
+}
+
+.div-txt-search
+{
+  padding: 5px;
+  border: 1px solid gainsboro;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 8px;
+
+}
+
+.div-txt-search mat-icon
+{
+  color: gainsboro;
+
 }
 
 .txtSearch{
-    padding: 10px;
-    border-radius: 8px;
+    padding: 5px;
+    width: 100%;
     border: 0;
-    
+    outline: none;
 }
-
 
 
 .search-results{

@@ -1,9 +1,13 @@
 <nav>
     <label>Music Player</label>
     <div class="div-search">
-        <input class="txtSearch" type="search" placeholder="search..">
+        <div class="div-txt-search">
+            <mat-icon>search</mat-icon>
+            <input ngModel #txtSearchValue class="txtSearch" type="search" placeholder="Search ...">
+        </div>
+        
         <div class="sea-div">
-            <ul class="search-results">
+            <ul *ngIf="txtSearchValue.value !== ''" class="search-results">
                 <li  *ngFor="let song of songs">
                     <div class="song-item">
                         <img src="{{song.image}}">
@@ -15,8 +19,6 @@
                     </div>
                     <hr>
                 </li>
-                
-
             </ul>
         </div>
        

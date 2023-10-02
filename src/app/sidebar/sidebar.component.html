@@ -1,7 +1,7 @@
 <div class="©">
 
     <div *ngFor="let song of songs">
-        <div class="song-item">
+        <div class="song-item" (click)="mSelectedSong(song)">
             <img src="{{song.image}}">
 
             <div class="track-title">
