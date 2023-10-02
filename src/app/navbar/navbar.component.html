@@ -1,9 +1,65 @@
 <nav>
     <label>Music Player</label>
+    <div class="div-search">
+        <input class="txtSearch" type="search" placeholder="search..">
+        <div class="sea-div">
+            <ul class="search-results">
+                <li  *ngFor="let song of songs">
+                    <div class="song-item">
+                        <img src="{{song.image}}">
+            
+                        <div class="track-title">
+                            <label class="s-artist">{{song.Artist}}</label>
+                            <label class="s-title">{{song.title}}</label>
+                        </div>
+                    </div>
+                    <hr>
+                </li>
+                
 
-    <!-- <div> -->
+            </ul>
+        </div>
+       
+    </div>
+
+    <div class="dropdown">
         <img class="prof" src={{image}}>
-    <!-- </div> -->
+
+        <div class="dropdown-content">
+            <div class="div-items">
+                <a><mat-icon>settings</mat-icon>Settings</a>
+                <hr>
+                <div class="cls-about">
+                    <div class="Abb">
+                        <mat-icon>info</mat-icon>About
+                    </div>
+
+                    <div class="dd-con">
+                        <div class="about-this">
+                                                <hr>
+                                                <label class="lblT">Online Music Player</label>
+                                                
+                                                <div class="deve">
+                                                    <label class="dev-ti">Developers:</label>
+                                                    <label>.....</label>
+                                                    <label>.....</label>
+                                                    <label>.....</label>
+                                                    <label>.....</label>
+                                                    
+                                                </div>
+                                                <label class="ver">V: 1.0.0.0</label>
+
+                                                
+                                            </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
     <!-- <img src="../../assets/images/list-music-svgrepo-com.svg"  style="width:50px; height: 50px;"> -->
     
 </nav>

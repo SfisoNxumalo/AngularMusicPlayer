@@ -1,5 +1,4 @@
 nav{
-    /* background-color: rgb(81, 95, 221); */
     background-color: white;
     font-size: 30px;
     color: black;
@@ -12,14 +11,207 @@ nav{
     box-shadow: 0px 2px 27px -6px rgba(0,0,0,0.18);
 }
 
+/* -----------Profile dropdown--------------- */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    align-self: center;
+    
+  }
+
  .prof {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
      /* margin-right: 3%; */
 }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 190px;
+    right: 5px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 10px 10px 10px 10px;
+    z-index: 1000; 
+  }
+
+  .dropdown:hover .dropdown-content  {
+    display: block; 
+  }
+
+  .div-items{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 5px;
+  }
+
+  .div-items a, .Abb{
+    display: flex;
+    gap: 5px;
+    font-size: 15px;
+    align-items: center;
+    padding: 5px 0px;
+    cursor: pointer;
+  }
+
+  .div-items mat-icon{
+    display: flex;
+    font-size: 19px;
+
+    align-items: center;
+
+  }
+
+  .cls-about{
+    font-size: 15px;
+    position: relative;
+    display: inline-block;
+    
+  }
+
+  .about-this{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    
+  }
+
+  .dd-con{
+    display: none;
+    position: absolute;
+  }
+
+  .cls-about:hover .dd-con, .cls-about:hover .dropdown .dropdown-content {
+    display: block;
+    min-height: auto;
+    background-color: white;
+  }
+
+
+  .about-this .lblT{
+    font-weight: 600;
+
+  }
+
+  .about-this .dev-ti{
+    text-decoration: underline;
+
+  }
+
+  .about-this .deve{
+    display: flex;
+    flex-direction: column;
+    color: black;
+    font-weight: 500;
+    
+  }
+
+  .about-this .ver{
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
 
 
 label{
     margin-right: 4%;
 }
+
+/* --------------Search Field-------------- */
+
+.div-search{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+}
+
+.txtSearch{
+    padding: 10px;
+    border-radius: 8px;
+    border: 0;
+    
+}
+
+
+
+.search-results{
+    margin: 0px;
+    padding: 5px 0px 5px 5px;
+    border-radius: 0px 0px 8px 8px;
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.35);
+    background-color: white;
+    position: absolute;
+    max-height: 150px;
+    list-style: none;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.search-results::-webkit-scrollbar{
+    width: 5px;  
+    padding: 5px;
+}
+
+.search-results::-webkit-scrollbar-track{
+    width: 1px;
+    padding: 5px;
+}
+
+.search-results::-webkit-scrollbar-thumb{
+    width: 5px;
+    background-color: rgb(185, 185, 185);
+    border-radius: 15px;
+}
+
+.song-item{
+    color: black;
+    max-height: 30px;
+    background-color:  white;
+    padding: 3px 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.song-item:hover{
+    background-color: rgb(175, 175, 175);
+    margin: 0 5px;
+    transition: margin ease-in-out 0.3s;
+}
+
+.song-item:hover{
+    margin: 0 0px;
+}
+
+    
+.track-title{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.s-artist{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.s-title{
+    font-size: 11px;
+    font-weight: 500;
+    width: 100%;
+}
+
+.song-item img{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;   
+}
+

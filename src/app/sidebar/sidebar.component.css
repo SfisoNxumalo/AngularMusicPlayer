@@ -16,7 +16,9 @@
 }
 
 .song-item:hover{
-    background-color: white;
+    background-color: rgb(175, 175, 175);
+    margin: 0 10px;
+    transition: margin ease-in-out 0.3s;
 }
 
 hr{
@@ -27,6 +29,7 @@ hr{
 .track-title{
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .s-artist{
@@ -40,6 +43,36 @@ hr{
 .song-item img{
     width: 35px;
     height: 35px;
-    border-radius: 50%;
+    border-radius: 50%;   
+}
+
+
+@media only screen and (max-width: 700px) {
+
+.song-item:hover{
+    margin: 0 0px;
+}
+
+    
+.track-title{
+    display: flex;
+    flex-direction: column;
+}
+
+.s-artist{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.s-title{
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.song-item img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;   
+}
     
 }
