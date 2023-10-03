@@ -28,6 +28,7 @@ export class BottomPlayComponent {
  
    num = 0;
   count = 0;
+  
    mDragged(event: any){
     this.aud.currentTime = event.value;
     this.num = this.aud.currentTime;
