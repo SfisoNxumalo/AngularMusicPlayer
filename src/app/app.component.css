@@ -1,23 +1,120 @@
+
+
 .sidebar{
+    
     left: 0;
     width: 20%;
     max-width: 40%;
     height: 75vh;
     max-height: 75vh;
+    box-shadow: 0px 8px 20px -6px rgba(0,0,0,0.22);
+
+    
     overflow: auto;
     /* background-color: rgb(48, 68, 250); */
     
 }
 
+.track-holder{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.Track-details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.clsArtist, .clsTitle{
+    color: black;
+}
+
+.clsArtist{
+    font-size: 38px;
+    font-weight: bolder;
+}
+
+.clsTitle{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+
+
 /* .bottom{
 
+    position: fixed; 
+    bottom: 0;
 } */
 
 ::-webkit-scrollbar{
-    width: 0;
+    width: 5px;  
+    padding: 5px;
 }
 
-@media only screen and (max-width:700px) {
+::-webkit-scrollbar-track{
+    width: 1px;
+    padding: 5px;
+}
+
+::-webkit-scrollbar-thumb{
+    width: 5px;
+    background-color: rgb(185, 185, 185);
+    border-radius: 15px;
+}
+.current-track{
+    color: black;
+    flex-basis: 80%;
+    padding: 20px;
+
+}
+
+.Track-image{
+    display: flex;
+    flex-direction: row;
+    
+    
+}
+
+.Track-image .img-so{
+
+    border-radius: 10px;
+    width: 230px;
+    height: 230px;
+}
+
+.img-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+    flex-basis: 100%;
+    align-self: center;
+}
+
+.img-div .img-wav{
+    display: none;
+    width: 300px
+}
+
+.img-div .img-wavv{
+    display: none;
+}
+
+.img-div .none-play{
+    height:8px;
+    width: 301px;
+    background: #becab6;
+    border-radius: 10px;
+    position: absolute;
+
+}
+
+
+@media only screen and (max-width:1000px) {
     .sidebar{
         left: 0;
         width: 40%;
@@ -25,6 +122,41 @@
         height: 75vh;
         max-height: 75vh;
         overflow: auto;
-        background-color: rgb(48, 68, 250);
+        background-color: white;
+    }
+
+    .Track-details{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .clsArtist, .clsTitle{
+        color: black;
+    }
+    
+    .clsArtist{
+        font-size: 28px;
+        font-weight: bolder;
+    }
+    
+    .clsTitle{
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .img-div img{
+        width: 200px
+    }
+
+    .Track-image .img-so{
+
+        border-radius: 10px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .img-div .none-play{
+        width: 201px;
     }
 }

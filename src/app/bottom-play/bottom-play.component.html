@@ -11,7 +11,7 @@
 
     <div class="bottom-control">
         <div>
-            <button type="button" class="btn-controls loop" (click)="mLoop()"><mat-icon>{{loopSongIco}}</mat-icon></button>
+            <button type="button" class="btn-controls" (click)="mLoop()"><mat-icon [ngClass]="loopClass">{{loopSongIco}}</mat-icon></button>
         </div>
     
         <div class="audio-control">
@@ -24,7 +24,7 @@
         </div>
     
         <div>
-            <button type="button" class="btn-controls">favorite_border</button>
+            <button (click)="mFavourite()" type="button" class="btn-controls"><mat-icon [ngClass]="heartClass">{{favIco}}</mat-icon ></button>
             
         </div>
     </div>
