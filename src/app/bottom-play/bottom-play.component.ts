@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AudioService } from '../audio.service';
+
+import { PassSongServiceService } from '../pass-song-service.service';
 
 
 const audio_api = "https://localhost:3000/api/songs"
@@ -10,15 +12,21 @@ const audio_api = "https://localhost:3000/api/songs"
   styleUrls: ['./bottom-play.component.css'],
 })
 
+export class BottomPlayComponent implements OnInit {
 
+  song$?:any;
+  constructor(private songsSer: PassSongServiceService){}
 
-
-export class BottomPlayComponent {
-
-  //  aud = new Audio("https://d201.d2mefast.net/tb/9/e8/nasty_c_endless_official_video_mp3_28738.mp3?play");
-   aud = new Audio("https://d252.d2mefast.net/tb/8/9c/dlala_thukzin_iplan_ft_zaba_sykes_official_audio_mp3_47229.mp3?play");
-  //  aud = new Audio("https://d216.d2mefast.net/tb/8/e7/lil_durk_all_my_life_ft._j._cole_official_video_mp3_47620.mp3?play");
-   AudioDuration = "00:00";
+  // @Input() songLink? = "https://d288.d2mefast.net/tb/e/50/meek_mill_ft._nicki_minaj_chris_brown_all_eyes_on_you_official_video_mp3_54445.mp3?play";
+  @Input() songLink? = ''
+  // aud?:any;
+  ngOnInit(): void {
+    // this.song$ = this.songsSer.mShowLoadedSong();
+    console.log(this.aud)
+  }
+  
+  aud = new Audio(this.songLink);
+  AudioDuration = "00:00";
    audD = 0;
 
    songCondition = false;
@@ -71,13 +79,16 @@ export class BottomPlayComponent {
    ACTimeM = "00"
    ACTimeS = "00"
   //  AudioCurrentTime = this.ACTimeM + ":" + this.ACTimeS;
-
+  
   mPlayOrPause(){
+    console.log(this.aud)
 
-    if(!this.songCondition){
+    if(!this.songCondition)
+    {
      
       this.songCondition = true
       this.aud.play();
+      console.log(this.aud.duration);
       this.AudioDuration = this.mGetAudioDuration(this.aud);
       this.mGetAudioCurrentTime(this.aud);
       this.audD = this.aud.duration;
@@ -107,7 +118,8 @@ export class BottomPlayComponent {
 
   }
 
-  mGetAudioDuration(audio:any):string{
+  mGetAudioDuration(audio:any):string {
+
     let duration = (Number(audio.duration) / 60).toFixed(2);
     return duration.replace(".", ":");
   }
