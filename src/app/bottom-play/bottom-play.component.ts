@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { AudioService } from '../audio.service';
 
 import { PassSongServiceService } from '../pass-song-service.service';
@@ -12,19 +12,23 @@ const audio_api = "https://localhost:3000/api/songs"
   styleUrls: ['./bottom-play.component.css'],
 })
 
-export class BottomPlayComponent implements OnInit {
+export class BottomPlayComponent implements OnChanges{
 
   song$?:any;
   constructor(private songsSer: PassSongServiceService){}
 
   // @Input() songLink? = "https://d288.d2mefast.net/tb/e/50/meek_mill_ft._nicki_minaj_chris_brown_all_eyes_on_you_official_video_mp3_54445.mp3?play";
   @Input() songLink? = ''
+  @Input() blLoaded = true;
+  @Output() newPlayNew = new EventEmitter<boolean>();
   // aud?:any;
-  ngOnInit(): void {
-    // this.song$ = this.songsSer.mShowLoadedSong();
-    console.log(this.aud)
+
+  ngOnChanges(){
+    if(this.blLoaded){
+      this.mPlayOrPause();
+    }
+
   }
-  
   aud = new Audio(this.songLink);
   AudioDuration = "00:00";
    audD = 0;
@@ -79,20 +83,32 @@ export class BottomPlayComponent implements OnInit {
    ACTimeM = "00"
    ACTimeS = "00"
   //  AudioCurrentTime = this.ACTimeM + ":" + this.ACTimeS;
-  
-  mPlayOrPause(){
-    console.log(this.aud)
 
+  mPlayOrPause(){
+
+    if(this.blLoaded) {
+      
+      clearInterval(this.time);
+      this.songCondition = false;
+      this.songCon = "play_arrow";
+      this.count = 0;
+      this.cur = "00";
+
+      this.blLoaded = false;
+      this.newPlayNew.emit(false);
+      this.aud.load();
+      this.aud = new Audio(this.songLink);
+      this.songCondition = false;
+    }
+    
     if(!this.songCondition)
     {
-     
-      this.songCondition = true
-      this.aud.play();
-      console.log(this.aud.duration);
-      this.AudioDuration = this.mGetAudioDuration(this.aud);
-      this.mGetAudioCurrentTime(this.aud);
-      this.audD = this.aud.duration;
-      this.songCon = "pause"
+        this.songCondition = true
+        this.aud.play();
+        this.AudioDuration = this.mGetAudioDuration(this.aud);
+        this.mGetAudioCurrentTime(this.aud);
+        this.audD = this.aud.duration;
+        this.songCon = "pause"
     }
     else{
       this.aud.pause();
@@ -123,24 +139,26 @@ export class BottomPlayComponent implements OnInit {
     let duration = (Number(audio.duration) / 60).toFixed(2);
     return duration.replace(".", ":");
   }
-
+  time?:any;
+  cur = "00";
   mGetAudioCurrentTime(audio:any){
 
-    let cur = "00";
+    
 
-    let time = setInterval(() => {
+      this.time = setInterval(() => {
       this.num = audio.currentTime;     
 
       this.count++;
 
-      if(!this.songCondition){clearInterval(time);}
+      if(!this.songCondition){clearInterval(this.time);}
+
         if(audio.ended)
         {
-          clearInterval(time);
+          clearInterval(this.time);
           this.songCondition = false;
           this.songCon = "play_arrow";
           this.count = 0;
-          cur = "00";
+          this.cur = "00";
         }
 
         let curr = audio.currentTime.toFixed(0);
@@ -158,13 +176,13 @@ export class BottomPlayComponent implements OnInit {
         }
 
         if(this.count < 10){
-          cur = "0" + this.count
+          this.cur = "0" + this.count
         }
         else{
-          cur = String(this.count);
+          this.cur = String(this.count);
         }
 
-          this.ACTimeS = cur;
+          this.ACTimeS = this.cur;
 
     },1000);
   }

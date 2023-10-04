@@ -30,17 +30,23 @@ export class AppComponent implements OnInit {
   srcImage2 = "https://i.postimg.cc/pdf8HZRw/giphy-unscreen.gif"
 
   // CurrentSong = this.song$.value;
-  
   songArtist = "Nothing playing";
   songTitle?:string;
   songImage?:string;
   songAudio?:string;
+
+  loadNew = false;
+
+  mChangeSongCondition(bool:boolean){
+    this.loadNew = bool;
+  }
 
   mShowSelectedSong(song:Song){
       this.songTitle = song.title
       this.songArtist = song.Artist;
       this.songImage = song.image;
       this.songAudio = song.audio;
+      this.loadNew = true;
       // this.songUrl = song.Url;
   }
 }

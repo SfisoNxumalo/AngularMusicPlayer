@@ -39,6 +39,6 @@
 
 
  <div class="bottom">
-    <app-bottom-play [songLink]="songAudio"></app-bottom-play>
+    <app-bottom-play (newPlayNew)="mChangeSongCondition($event)" [blLoaded]="loadNew" [songLink]="songAudio"></app-bottom-play>
  </div>
  
