@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Song } from './SongInterface';
 import { BehaviorSubject, Subject } from 'rxjs'
 import { PassSongServiceService } from './pass-song-service.service';
+import { SpotifyServiceService } from './spotify-service.service';
+import { Token } from '@angular/compiler';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,7 @@ import { PassSongServiceService } from './pass-song-service.service';
 export class AppComponent implements OnInit {
   title = 'MusicPlayer';
 
-  constructor(private songsSer: PassSongServiceService){}
+  constructor(private songsSer: PassSongServiceService, private ApiService: SpotifyServiceService){}
   // song$ = this.songsSer.mShowLoadedSong();
 
   play(value?:string):string{
@@ -24,6 +26,18 @@ export class AppComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    // this.ApiService.getAuth().subscribe(token => {
+    //   this.songArtist = token;
+    //   console.log("token", token)
+    // });
+
+    console.log(this.songArtist);
+
+    this.ApiService.getSongs().subscribe(songData => {
+      console.log(songData)
+    });
+
+    // console.log("token")
   }
 
   srcImage = "https://i.postimg.cc/qMbHqyms/unscreen-003.png"
@@ -32,7 +46,7 @@ export class AppComponent implements OnInit {
   // CurrentSong = this.song$.value;
   songArtist = "Nothing playing";
   songTitle?:string;
-  songImage?:string;
+  songImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjHaF-Os2eIoblm4ZVHpD6Segb0qd7kC5MvJuMu4CtPQqIz-MQODzbjAOi2LOFxDB3uSY&usqp=CAU";
   songAudio?:string;
 
   loadNew = false;

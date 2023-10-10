@@ -2,14 +2,26 @@ nav{
     background-color: white;
     font-size: 30px;
     color: black;
-    padding: 15px 10px;
+    padding: 15px 10px 0px 10px;
     font-weight: 500;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0px 2px 27px -6px rgba(0,0,0,0.18);
 }
+
+.div-nav{
+  font-size: 30px;
+  width: 100%;
+  color: black;
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
 
 /* -----------Profile dropdown--------------- */
 
@@ -233,3 +245,34 @@ label{
     border-radius: 50%;   
 }
 
+.btt-sele{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-size: 16px;
+  /* padding: 10px 10px; */
+  width: 50%;
+  justify-content: space-evenly;
+}
+
+
+.local-div, .online-div{
+  display: flex;
+  flex-direction: row;
+  flex-basis: 50%;
+  justify-content: center;
+  padding: 8px 10px;
+  border-radius: 10px 10px 0 0;
+}
+
+.local-div:hover, .online-div:hover{
+  background-color: rgb(214, 214, 214);
+  border-radius: 10px 10px 0 0;
+}
+
+.selectedRouter{
+  background-color: black;
+  border-radius: 10px 10px 0 0;
+  color: white;
+  font-weight: bold;
+}
