@@ -1,6 +1,4 @@
- <app-navbar></app-navbar>
-
- <router-outlet></router-outlet>
+<app-navbar></app-navbar>
 
  <div class="track-holder">
    <div class="sidebar">
@@ -8,35 +6,32 @@
       <app-sidebar (newItemEvent)="mShowSelectedSong($event)"></app-sidebar>
    </div>
 
- <div class="current-track">
+      <div class="current-track">
+         <router-outlet></router-outlet>
 
-   <div class="Track-image">
+         <!-- <div class="Track-image">
 
-      <img class="img-so" src="{{songImage}}">
+            <img class="img-so" src="{{songImage}}">
 
-      <div class="img-div">
+            <div class="img-div">
 
-         <div class="none-play">
+               <div class="none-play">
+               </div>
+               <img [class]="play(songImage)" [src]="srcImage2"  >
+               <div class="bottom-white">
+
+               </div>
+            </div>
+
          </div>
-         <img [class]="play(songImage)" [src]="srcImage2"  >
-         <div class="bottom-white">
 
-         </div>
+         <div class="Track-details">
+            <label class="clsArtist">{{songArtist}}</label>
+            <label class="clsTitle">{{songTitle}}</label>
+
+         </div> -->
+
       </div>
-
-   </div>
-
-   <div class="Track-details">
-      <label class="clsArtist">{{songArtist}}</label>
-      <label class="clsTitle">{{songTitle}}</label>
-      
-<!-- 
-      <label class="clsArtist">{{song$.value.Artist}}</label>
-      <label class="clsTitle">{{song$.value.title}}</label> -->
-
-   </div>
-
- </div>
  </div>
 
 

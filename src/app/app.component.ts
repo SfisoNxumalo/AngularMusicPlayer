@@ -31,11 +31,11 @@ export class AppComponent implements OnInit {
     //   console.log("token", token)
     // });
 
-    console.log(this.songArtist);
+    // console.log(this.songArtist);
 
-    this.ApiService.getSongs().subscribe(songData => {
-      console.log(songData)
-    });
+    // this.ApiService.getSongs().subscribe(songData => {
+    //   console.log(songData)
+    // });
 
     // console.log("token")
   }

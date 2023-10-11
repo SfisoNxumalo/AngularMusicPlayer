@@ -24,7 +24,7 @@ export class SpotifyServiceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAuth():Observable<any> {
+  getGenerateToken():Observable<any> {
     // console.log(body);
 
     // console.log(btoa(environment.client_id + ':' + environment.client_secret))

@@ -12,6 +12,8 @@ import { BottomPlayComponent } from './bottom-play/bottom-play.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AudioPlayerComponent } from './audio-player/audio-player.component';
 import { SongsComponent } from './songs/songs.component';
+import { LocalPLayerComponent } from './local-player/local-player.component';
+import { OnlinePLayerComponent } from './online-player/online-player.component';
 
 
 
@@ -22,7 +24,9 @@ import { SongsComponent } from './songs/songs.component';
     SidebarComponent,
     BottomPlayComponent,
     AudioPlayerComponent,
-    SongsComponent
+    SongsComponent,
+    LocalPLayerComponent,
+    OnlinePLayerComponent
   ],
   imports: [
     BrowserModule,

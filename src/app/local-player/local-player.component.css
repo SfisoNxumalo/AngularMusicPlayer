@@ -1,5 +1,4 @@
 
-
 .sidebar{
     
     left: 0;
@@ -43,11 +42,11 @@
 
 
 
-.bottom{
+/* .bottom{
+
     position: fixed; 
-    width: 100%;
     bottom: 0;
-}
+} */
 
 ::-webkit-scrollbar{
     width: 5px;  
@@ -74,6 +73,8 @@
 .Track-image{
     display: flex;
     flex-direction: row;
+    
+    
 }
 
 .Track-image .img-so{
@@ -108,7 +109,9 @@
     background: #becab6;
     border-radius: 10px;
     position: absolute;
+
 }
+
 
 @media only screen and (max-width:1000px) {
     .sidebar{
@@ -148,8 +151,8 @@
     .Track-image .img-so{
 
         border-radius: 10px;
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
     }
 
     .img-div .none-play{

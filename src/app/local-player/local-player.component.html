@@ -1,0 +1,30 @@
+<div class="current-track">
+
+    <div class="Track-image">
+ 
+       <img class="img-so" src="{{songImage}}">
+ 
+       <div class="img-div">
+ 
+          <div class="none-play">
+          </div>
+          
+          <img [class]="play(songImage)" [src]="srcImage2"  >
+          <div class="bottom-white">
+ 
+          </div>
+       </div>
+ 
+    </div>
+ 
+    <div class="Track-details">
+       <label class="clsArtist">{{songArtist}}</label>
+       <label class="clsTitle">{{songTitle}}</label>
+       
+ <!-- 
+       <label class="clsArtist">{{song$.value.Artist}}</label>
+       <label class="clsTitle">{{song$.value.title}}</label> -->
+ 
+    </div>
+ 
+  </div>
