@@ -10,12 +10,13 @@ export class PassSongServiceService {
   constructor() { }
    songData = new BehaviorSubject<any>({});
   // datam = this.songData.asObservable();
+  new = "";
 
   sendSong(data:any){
     console.log("sent >> " + data.Artist + " " + data.title)
     this.songData.next(data);
     // this.song = data;
-    
+    this.new = "newwwww"
   }
 
   song?: Song;
@@ -27,6 +28,7 @@ export class PassSongServiceService {
   // }
 
   mShowLoadedSong(){
-    return this.songData
+    // return 
+    console.log("retrieved >> " + this.songData)
   }
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { SpotifyServiceService } from '../spotify-service.service';
 import { TokenDetails } from 'src/TokenDetails';
-import { Token } from '@angular/compiler';
+import { TokenInt } from 'src/TokenInterface';
 
 const LocalTokenKey = "Token"
 
@@ -13,68 +13,95 @@ const LocalTokenKey = "Token"
 })
  
 
+
 export class OnlinePLayerComponent implements OnInit{
   constructor(private spotifyService:SpotifyServiceService){};
 
-  AccessToken = "";
+  AccessToken?:TokenDetails;
   // tokenDetails?:TokenDetails;
+
+  list?:TokenInt;
 
 ngOnInit(): void {
  const token = localStorage.getItem(LocalTokenKey)
-
- if(token){
-  
-  const tokenDetails:TokenDetails = { 
-    Token:"BQCj7fZGMrh-CYvG1WAH1G8TdDfeXgv571doy6KqNRDGibblEJpytCiOMmMzjtgqIKd-cZxHVQAuDIaJmFSqufqHKhml5QYo76UiXz-ANP9sKCcetJY", 
-    Date: this.mGetTime() };
-
-  localStorage.setItem(LocalTokenKey, JSON.stringify(tokenDetails))
-
-    console.log("Generated Token")
- }
- else{
+ 
+ if(!token)
+ {
+  this.mGenerateToken();
+}
+ else
+ {
 
   this.AccessToken = JSON.parse(localStorage.getItem(LocalTokenKey) || "");
-  console.log(this.AccessToken)
+
+  if(this.AccessToken){
+
+    const dddDate = new Date();
+
+    if(dddDate.getTime() > this.mGetTime(true, this.AccessToken?.Date).getTime()){
+      this.mGenerateToken()
+    }
+  }
  }
 
 }
 
-mGetTime():string{
+mGetTime(value:boolean, date:string):any {
 
-  const dt_date = new Date()
-        let hour = dt_date.getHours();
-        let min = dt_date.getMinutes();
-        let sec = dt_date.getSeconds();
+  const displayTime = new Date();
 
-        let HourH = String(hour), MinM = String(min), SecS = String(sec);
+  try
+  {
+      if(value){
+        const dddDate = new Date(date);
 
-        if(hour < 10)
-        {
-          HourH = "0" + hour;
-        }
-        
-        if(min < 10)
-        {
-          MinM = "0" + min;
-        }
+        const addHour = 1 * 60 * 60 * 1000;
 
-        if(sec < 10)
-        {
-          SecS = "0" + sec;
-        }
+        displayTime.setTime(dddDate.getTime() + addHour)
 
-        const displayTime = HourH + ":" + MinM + ":" + SecS;
-
-        console.log(displayTime)
+      }
+  }
+  catch(error){
+    alert("FAILED! " + error)
+  }
 
   return displayTime;
 }
 
-mGenerateToken(){
-    this.spotifyService.getGenerateToken().subscribe(token => {
-      
-    });
+mSaveToken(token:any):boolean{
+  try
+  {
+    const tokenDetails:TokenDetails = { 
+      Token:token, 
+      Date: this.mGetTime(false, "") 
+    };
+
+    localStorage.setItem(LocalTokenKey, JSON.stringify(tokenDetails));
+
+    return true
+  }
+  catch(error){
+alert("FAILED! " + error)
+  }
+  
+  return false;
+
 }
 
+    mGenerateToken() {
+      this.spotifyService.getGenerateToken().subscribe(token => {
+        this.list = token;  
+        
+        if(this.mSaveToken(this.list?.access_token)){
+          alert("Generated and Saved a Token")
+        }
+        else{
+          alert("Failed to Generated and Saved a new Token")
+        }
+    },
+    error =>{
+      console.log("gdgdgdggdgdgd",error)
+    })
+
+    }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Song } from './SongInterface';
 import { BehaviorSubject, Subject } from 'rxjs'
 import { PassSongServiceService } from './pass-song-service.service';
@@ -10,7 +10,7 @@ import { Token } from '@angular/compiler';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges {
   title = 'MusicPlayer';
 
   constructor(private songsSer: PassSongServiceService, private ApiService: SpotifyServiceService){}
@@ -26,18 +26,20 @@ export class AppComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    // this.ApiService.getAuth().subscribe(token => {
-    //   this.songArtist = token;
-    //   console.log("token", token)
-    // });
 
-    // console.log(this.songArtist);
+  }
 
-    // this.ApiService.getSongs().subscribe(songData => {
-    //   console.log(songData)
-    // });
+  ngOnChanges():void{
+    // for (const propName in changes) {
+    //   if (changes.hasOwnProperty(propName)) {
+    //     switch (propName) {
+    //       case 'myFirstInputParameter': {
+    //         this.doSomething(change.currentValue)
+    //       }
+    //     }
+    //   }
+    // }
 
-    // console.log("token")
   }
 
   srcImage = "https://i.postimg.cc/qMbHqyms/unscreen-003.png"
