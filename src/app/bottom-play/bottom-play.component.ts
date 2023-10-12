@@ -82,7 +82,6 @@ export class BottomPlayComponent implements OnChanges{
 
    ACTimeM = "00"
    ACTimeS = "00"
-  //  AudioCurrentTime = this.ACTimeM + ":" + this.ACTimeS;
 
   mPlayOrPause(){
 
@@ -105,7 +104,7 @@ export class BottomPlayComponent implements OnChanges{
     {
         this.songCondition = true
         this.aud.play();
-        this.AudioDuration = this.mGetAudioDuration(this.aud);
+        // this.AudioDuration = this.mGetAudioDuration(this.aud);
         this.mGetAudioCurrentTime(this.aud);
         this.audD = this.aud.duration;
         this.songCon = "pause"
@@ -137,13 +136,15 @@ export class BottomPlayComponent implements OnChanges{
   mGetAudioDuration(audio:any):string {
 
     let duration = (Number(audio.duration) / 60).toFixed(2);
+    // console.log(audio.duration)
+    // console.log(duration)
     return duration.replace(".", ":");
   }
+
   time?:any;
   cur = "00";
-  mGetAudioCurrentTime(audio:any){
 
-    
+  mGetAudioCurrentTime(audio:any){
 
       this.time = setInterval(() => {
       this.num = audio.currentTime;     
@@ -151,6 +152,9 @@ export class BottomPlayComponent implements OnChanges{
       this.count++;
 
       if(!this.songCondition){clearInterval(this.time);}
+      
+      this.AudioDuration = this.mGetAudioDuration(this.aud);
+      this.audD = this.aud.duration;
 
         if(audio.ended)
         {
@@ -202,6 +206,21 @@ export class BottomPlayComponent implements OnChanges{
       this.FavouriteSong = false;
       this.heartClass = "";
 
+    }
+
+  }
+
+  loadSong(event:any){
+    const selectedFile = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+
+    reader.onload = async (event:any) => {
+      console.log(event.target.result);
+      // const track: Track = {
+      //   name: selectedFile.name,
+      //   path: 
+      // }
     }
 
   }
