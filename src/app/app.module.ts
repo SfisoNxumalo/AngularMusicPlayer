@@ -14,6 +14,7 @@ import { AudioPlayerComponent } from './audio-player/audio-player.component';
 import { SongsComponent } from './songs/songs.component';
 import { LocalPLayerComponent } from './local-player/local-player.component';
 import { OnlinePLayerComponent } from './online-player/online-player.component';
+import { PlaylistComponent } from './playlist/playlist.component';
 
 
 
@@ -26,7 +27,8 @@ import { OnlinePLayerComponent } from './online-player/online-player.component';
     AudioPlayerComponent,
     SongsComponent,
     LocalPLayerComponent,
-    OnlinePLayerComponent
+    OnlinePLayerComponent,
+    PlaylistComponent
   ],
   imports: [
     BrowserModule,

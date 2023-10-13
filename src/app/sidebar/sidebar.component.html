@@ -1,4 +1,4 @@
-<div class="©">
+<!-- <div class="©">
 
     <div *ngFor="let song of songs">
         <div class="song-item" (click)="mSelectedSong(song)">
@@ -11,9 +11,16 @@
         </div>
         <hr>
     </div>
+</div> -->
+
+<div class="playlist" *ngFor = "let song of my_playlist">
+    <ol>
+        <li>{{song.name}}</li>
+        <img src={{song.image}} alt="" srcset="">
+    </ol>
 </div>
 
 <div class="btn-upload">
     <mat-icon>cloud_upload</mat-icon>
-    <input type="file" accept="audio/*">
+    <input type="file" accept="audio/*" (change)= "loadSong($event)">
 </div>

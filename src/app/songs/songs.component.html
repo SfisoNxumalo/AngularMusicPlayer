@@ -1,27 +1,7 @@
 <div class="div-table">
-    <table>
-        <thead>
-            <tr>
-                
-                <th>Title</th>
-                <th>Artist</th>
-                <th>Genre</th>
-                <th>Album</th>
-                <th>url</th>
-            </tr>
 
-            </thead>
-
-        <tbody>
-        <tr *ngFor="let track of Tracks">
+        <div *ngFor="let track of Tracks">
                 
-                <td>{{track.title}}</td>
-                <td>{{track.artist}}</td>
-                <td>{{track.genre}}</td>
-                <td>{{track.album}}</td>
-                <td>{{track.url}}</td>
-            </tr>
-            
-        </tbody>
-    </table>
+                {{track.name}}
+        </div>
 </div>
