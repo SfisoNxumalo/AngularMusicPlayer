@@ -10,20 +10,21 @@ export class PassSongServiceService {
   constructor() { }
    song1:any;
    songData = new BehaviorSubject<any>({});
+   imageController = new BehaviorSubject<any>(false);
 
   sendSong(data:any){
-    // console.log("sent >> " + data.name)
     this.songData.next(data);
-    this.song1 = data;
   }
 
-  song?: Song;
+  sendSongCod(data:boolean){
+    this.imageController.next(data);
+  }
 
   mShowLoadedSong(){
     return this.songData;
   }
 
-  mShowLoadedSong1(){
-    return this.song1;
+  mShowSongCod(){
+    return this.imageController;
   }
 }

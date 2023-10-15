@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 
 const SpotifyApiToken = "https://accounts.spotify.com/api/token";
-const SpotifyApiEndpoint = "https://api.spotify.com/v1/tracks?ids=7ouMYWpwJ422jRcDASZB7P%2C4VqPOruhp5EdPBeR92t6lQ%2C2takcwOaAZWiXQijPHIx7B";
+
 
   @Injectable({
   providedIn: 'root'
@@ -33,6 +33,8 @@ export class SpotifyServiceService {
 
   getSongs(token:any):Observable<any>{
 
+    const SpotifyApiEndpoint = "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5";
+
     // const Authenticatedheaders = new HttpHeaders();
 
     // Authenticatedheaders.set('Authorization', 'Bearer ' + token)
@@ -47,7 +49,7 @@ export class SpotifyServiceService {
       })
     }
 
-    return this.httpClient.get(SpotifyApiEndpoint, httpOptions);
+    return this.httpClient.get<any[]>(SpotifyApiEndpoint, httpOptions);
 
   }
 }

@@ -113,6 +113,7 @@ export class BottomPlayComponent implements OnChanges{
     {
         this.songCondition = true
         this.aud.play();
+        this.songsSer.sendSongCod(true);
         // this.AudioDuration = this.mGetAudioDuration(this.aud);
         this.mGetAudioCurrentTime(this.aud);
         this.audD = this.aud.duration;
@@ -122,6 +123,7 @@ export class BottomPlayComponent implements OnChanges{
       this.aud.pause();
       this.songCondition = false;
       this.songCon = "play_arrow";
+      this.songsSer.sendSongCod(false);
     }
   }
 
@@ -172,6 +174,8 @@ export class BottomPlayComponent implements OnChanges{
           this.songCon = "play_arrow";
           this.count = 0;
           this.cur = "00";
+          this.ACTimeM = "00"
+          this.ACTimeS = "00"
         }
 
         let curr = audio.currentTime.toFixed(0);

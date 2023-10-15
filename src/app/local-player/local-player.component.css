@@ -40,6 +40,17 @@
     font-weight: 600;
 }
 
+.bottom-white{
+    height: 33px;
+    background-color: white;
+}
+
+.holdB{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 60%;
+}
+
 
 
 /* .bottom{
@@ -64,15 +75,19 @@
     border-radius: 15px;
 }
 .current-track{
+    display: flex;
+    flex-direction: column;
     color: black;
     flex-basis: 80%;
     padding: 20px;
+    gap: 20px;
 
 }
 
 .Track-image{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     
     
 }
@@ -86,17 +101,19 @@
 
 .img-div{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     justify-self: center;
-    flex-basis: 100%;
     align-self: center;
+    height: 200px;
+    width: 400px;
 }
 
 .img-div .img-wav{
     display: none;
-    width: 300px
+    width: 300px;
+    border: white;
 }
 
 .img-div .img-wavv{
@@ -104,7 +121,7 @@
 }
 
 .img-div .none-play{
-    height:8px;
+    height:5px;
     width: 301px;
     background: #becab6;
     border-radius: 10px;

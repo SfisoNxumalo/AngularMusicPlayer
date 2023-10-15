@@ -34,6 +34,7 @@ export class SidebarComponent implements OnInit, OnChanges {
     // this.selectedSong = song;
     this.newItemEvent.emit(song);
     this.songSer.sendSong(song);
+    this.songSer.sendSongCod(true);
     // this.getCurrentSong()
 
   }
@@ -65,8 +66,10 @@ export class SidebarComponent implements OnInit, OnChanges {
         console.log(data)
       })
 
-      // this.newItemEvent.emit(track);
-      // this.songSer.sendSong(track);
+      this.my_playlist.push(track)
+
+      this.newItemEvent.emit(track);
+      this.songSer.sendSong(track);
     }
 
    reader.readAsDataURL(selectedFile);
@@ -88,6 +91,8 @@ export class SidebarComponent implements OnInit, OnChanges {
     return songT
 
   }
+
+  
 
   
 }

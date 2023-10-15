@@ -11,6 +11,15 @@ nav{
     box-shadow: 0px 2px 27px -6px rgba(0,0,0,0.18);
 }
 
+label{
+
+  color: black;
+  padding: 3px;
+  border-radius: 6px;
+  font-weight: 600;
+
+}
+
 .div-nav{
   font-size: 30px;
   width: 100%;

@@ -1,4 +1,6 @@
 import { Component, OnChanges, Input, OnInit } from '@angular/core';
+import WaveSurfer from 'wavesurfer.js';
+
 import { PassSongServiceService } from '../pass-song-service.service';
 
 @Component({
@@ -13,31 +15,55 @@ export class LocalPLayerComponent implements OnInit, OnChanges{
   song:any;
   
   @Input() blLoaded?:boolean;
+  div = 'none-play'
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(){
+
+
     this.passSongService.mShowLoadedSong().subscribe(song =>{
       this.songArtist = song.name
+
+      if(song.name){
+        // const wavesurfer = WaveSurfer.create({
+        //   container: '#img-div',
+        //   waveColor: 'white',
+        //   progressColor: '#becab6',
+        //   url: song.path,
+        //   minPxPerSec: 320,
+        //   hideScrollbar: true
+        // })
+
+        // wavesurfer.load(song.path)
+        // wavesurfer.playPause()
+    }
+
     })
+
+    this.passSongService.mShowSongCod().subscribe(condition => {
+      
+      if(condition){
+
+        this.srcImage2 = "https://i.postimg.cc/pdf8HZRw/giphy-unscreen.gif"
+        this.div = ''
+        }
+        else {
+          this.srcImage2 = ""
+          this.div = 'none-play'
+        }
+    
+
+    });
 
     this.blLoaded
   
     alert(this.song.name)
-
   }
 
   ngOnChanges(): void {
 
-  this.passSongService.mShowLoadedSong().subscribe(song =>{
-this.songArtist = song.name
-    })
-
-    this.blLoaded
-  
-    alert(this.song.name)
-
-    
-   
-    this.songTitle = ""
   }
   
   @Input() songArtist = "..";
@@ -46,16 +72,7 @@ this.songArtist = song.name
   songAudio?:string;
 
   srcImage = "https://i.postimg.cc/qMbHqyms/unscreen-003.png"
-  srcImage2 = "https://i.postimg.cc/pdf8HZRw/giphy-unscreen.gif"
+  srcImage2 = ""
 
-  play(value?:string):string {
-    if(value){
-      return "img-wavv"
-    }
-    else {
-      return "img-wav"
-    }
-  }
-  
 
 }
