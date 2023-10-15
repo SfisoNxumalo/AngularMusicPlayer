@@ -1,26 +1,27 @@
-<!-- <div class="©">
+<div class="sidebar-div">
 
-    <div *ngFor="let song of songs">
+    <div *ngFor="let song of my_playlist">
         <div class="song-item" (click)="mSelectedSong(song)">
             <img src="{{song.image}}">
 
             <div class="track-title">
-                <label class="s-artist">{{song.Artist}}</label>
-                <label class="s-title">{{song.title}}</label>
+                <label class="s-artist">{{trimSongText(song.name)}}</label>
+                <!-- <label class="s-title">{{song.title}}</label> -->
             </div>
         </div>
         <hr>
     </div>
-</div> -->
+    
+    <div class="btn-upload">
+        <mat-icon>cloud_upload</mat-icon>
+        <input type="file" accept="audio/*" (change)= "loadSong($event)">
+    </div>
+</div>
 
-<div class="playlist" *ngFor = "let song of my_playlist">
+<!-- <div class="playlist" *ngFor = "let song of my_playlist">
     <ol>
         <li>{{song.name}}</li>
         <img src={{song.image}} alt="" srcset="">
     </ol>
-</div>
+</div> -->
 
-<div class="btn-upload">
-    <mat-icon>cloud_upload</mat-icon>
-    <input type="file" accept="audio/*" (change)= "loadSong($event)">
-</div>

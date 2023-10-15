@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, Input, OnInit } from '@angular/core';
 import { PassSongServiceService } from '../pass-song-service.service';
 
 @Component({
@@ -6,23 +6,42 @@ import { PassSongServiceService } from '../pass-song-service.service';
   templateUrl: './local-player.component.html',
   styleUrls: ['./local-player.component.css']
 })
-export class LocalPLayerComponent implements OnChanges{
+export class LocalPLayerComponent implements OnInit, OnChanges{
 
   constructor(private passSongService:PassSongServiceService){}
+  
   song:any;
+  
+  @Input() blLoaded?:boolean;
+
+  ngOnInit(): void {
+    this.passSongService.mShowLoadedSong().subscribe(song =>{
+      this.songArtist = song.name
+    })
+
+    this.blLoaded
+  
+    alert(this.song.name)
+
+  }
 
   ngOnChanges(): void {
-    // this.passSongService.mShowLoadedSong().next((item: string) =>{
-    //   console.log("Playable " + item)
-    // });
 
-    console.log(this.passSongService.new)
-    // this.passSongService.mShowLoadedSong();
+  this.passSongService.mShowLoadedSong().subscribe(song =>{
+this.songArtist = song.name
+    })
+
+    this.blLoaded
+  
+    alert(this.song.name)
+
     
+   
+    this.songTitle = ""
   }
   
-  songArtist = "J cole";
-  songTitle = "Love yours"
+  @Input() songArtist = "..";
+  songTitle = ".."
   songImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjHaF-Os2eIoblm4ZVHpD6Segb0qd7kC5MvJuMu4CtPQqIz-MQODzbjAOi2LOFxDB3uSY&usqp=CAU";
   songAudio?:string;
 

@@ -8,27 +8,22 @@ import { Song } from './SongInterface';
 export class PassSongServiceService {
 
   constructor() { }
+   song1:any;
    songData = new BehaviorSubject<any>({});
-  // datam = this.songData.asObservable();
-  new = "";
 
   sendSong(data:any){
-    console.log("sent >> " + data.Artist + " " + data.title)
+    // console.log("sent >> " + data.name)
     this.songData.next(data);
-    // this.song = data;
-    this.new = "newwwww"
+    this.song1 = data;
   }
 
   song?: Song;
 
-  // sendSong(data:Song) {
-  //   console.log("sent >> " + data.Artist + " " + data.title);
-  //   this.mAlert();
-  //   this.song = data;
-  // }
-
   mShowLoadedSong(){
-    // return 
-    console.log("retrieved >> " + this.songData)
+    return this.songData;
+  }
+
+  mShowLoadedSong1(){
+    return this.song1;
   }
 }

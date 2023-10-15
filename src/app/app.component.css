@@ -1,24 +1,27 @@
+.main-holder{
+    display: flex;
 
+    flex-flow: column;
+}
 
 .sidebar{
-    
     left: 0;
     width: 20%;
     max-width: 40%;
-    height: 75vh;
-    max-height: 75vh;
     box-shadow: 0px 8px 20px -6px rgba(0,0,0,0.22);
-
-    
     overflow: auto;
     /* background-color: rgb(48, 68, 250); */
     
 }
 
-.track-holder{
+.main-holder .track-holder{
     display: flex;
     flex-direction: row;
+        height: 75vh;
+    max-height: 80vh;
+    flex: 1 1 auto;
     gap: 10px;
+    bottom: 0;
 }
 
 .Track-details{
@@ -41,11 +44,10 @@
     font-weight: 600;
 }
 
-
-
-.bottom{
+.main-holder .bottom{
     position: fixed; 
     width: 100%;
+    flex: 0 1 auto;
     bottom: 0;
 }
 

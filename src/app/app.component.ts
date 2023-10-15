@@ -30,15 +30,6 @@ export class AppComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges():void{
-    // for (const propName in changes) {
-    //   if (changes.hasOwnProperty(propName)) {
-    //     switch (propName) {
-    //       case 'myFirstInputParameter': {
-    //         this.doSomething(change.currentValue)
-    //       }
-    //     }
-    //   }
-    // }
 
   }
 
@@ -46,7 +37,7 @@ export class AppComponent implements OnInit, OnChanges {
   srcImage2 = "https://i.postimg.cc/pdf8HZRw/giphy-unscreen.gif"
 
   // CurrentSong = this.song$.value;
-  songArtist = "Nothing playing";
+  songArtist = "...kp";
   songTitle?:string;
   songImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjHaF-Os2eIoblm4ZVHpD6Segb0qd7kC5MvJuMu4CtPQqIz-MQODzbjAOi2LOFxDB3uSY&usqp=CAU";
   songAudio?:string;
@@ -57,11 +48,12 @@ export class AppComponent implements OnInit, OnChanges {
     this.loadNew = bool;
   }
 
-  mShowSelectedSong(song:Song){
-      this.songTitle = song.title
-      this.songArtist = song.Artist;
-      this.songImage = song.image;
-      this.songAudio = song.audio;
+  mShowSelectedSong(song:any){
+      // this.songTitle = song.title
+      this.songArtist = song.name;
+      // this.songImage = song.image;
+      // this.songAudio = song.audio;
+      // console.log(song)
       this.loadNew = true;
       // this.songUrl = song.Url;
   }

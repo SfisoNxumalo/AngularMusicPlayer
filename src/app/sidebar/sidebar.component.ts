@@ -14,7 +14,7 @@ import { PlaylistService } from '../playlist.service';
 export class SidebarComponent implements OnInit, OnChanges {
   
   my_playlist: any
-  @Output() newItemEvent = new EventEmitter<Song>();
+  @Output() newItemEvent = new EventEmitter<any>();
 
   constructor(private songSer: PassSongServiceService, private plistService: PlaylistService ){}
   
@@ -27,17 +27,10 @@ export class SidebarComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.getPlayList()
   }
- 
-  
-;
 
+  selectedSong?: any;
 
-
-  
-
-  selectedSong?: Song;
-
-  mSelectedSong(song:Song){
+  mSelectedSong(song:any){
     // this.selectedSong = song;
     this.newItemEvent.emit(song);
     this.songSer.sendSong(song);
@@ -45,14 +38,13 @@ export class SidebarComponent implements OnInit, OnChanges {
 
   }
 
-   
-
   getCurrentSong(){
     this.songSer.mShowLoadedSong()
   }
+
   getPlayList(){
     this.plistService.getTracks().then((values)=>{
-      this.my_playlist =  values
+      this.my_playlist = values
       console.log(values)
     })
   }
@@ -60,8 +52,7 @@ export class SidebarComponent implements OnInit, OnChanges {
   async loadSong(event:any){
     const selectedFile = event.target.files[0];
     const reader = new FileReader();
-    
-
+  
     reader.onload = async (event:any) => {
 
       const track  = {
@@ -69,18 +60,33 @@ export class SidebarComponent implements OnInit, OnChanges {
         path: event.target.result,
         image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjHaF-Os2eIoblm4ZVHpD6Segb0qd7kC5MvJuMu4CtPQqIz-MQODzbjAOi2LOFxDB3uSY&usqp=CAU"
       };
-      console.log(track)
 
-     this.plistService.saveTrack(track).then((data : any) =>{
-      console.log(data)
-    })
+      this.plistService.saveTrack(track).then((data : any) =>{
+        console.log(data)
+      })
+
+      // this.newItemEvent.emit(track);
+      // this.songSer.sendSong(track);
     }
+
    reader.readAsDataURL(selectedFile);
 
    setTimeout(()=>{
     this.getPlayList()
-   },50)
+   }, 50)
     
+  }
+
+  trimSongText(songT:string):string{
+
+    if(songT.length > 20){
+
+      return (songT.substring(0, 20) + "...")
+
+    }
+
+    return songT
+
   }
 
   

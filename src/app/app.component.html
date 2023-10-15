@@ -1,41 +1,23 @@
-<app-navbar></app-navbar>
 
- <div class="track-holder">
-   <div class="sidebar">
-      <!-- <app-sidebar></app-sidebar> -->
-      <app-sidebar (newItemEvent)="mShowSelectedSong($event)"></app-sidebar>
-   </div>
+   <app-navbar></app-navbar>
+<div class="main-holder">
+
+   <div class="track-holder">
+      <div class="sidebar">
+         <!-- <app-sidebar></app-sidebar> -->
+         <app-sidebar (newItemEvent)="mShowSelectedSong($event)"></app-sidebar>
+      </div>
 
       <div class="current-track">
          <router-outlet></router-outlet>
-
-         <!-- <div class="Track-image">
-
-            <img class="img-so" src="{{songImage}}">
-
-            <div class="img-div">
-
-               <div class="none-play">
-               </div>
-               <img [class]="play(songImage)" [src]="srcImage2"  >
-               <div class="bottom-white">
-
-               </div>
-            </div>
-
-         </div>
-
-         <div class="Track-details">
-            <label class="clsArtist">{{songArtist}}</label>
-            <label class="clsTitle">{{songTitle}}</label>
-
-         </div> -->
-
       </div>
- </div>
+   </div>
 
+   <div class="bottom">
+      <!-- <app-bottom-play (newPlayNew)="mChangeSongCondition($event)" [blLoaded]="loadNew" [songLink]="songAudio"></app-bottom-play> -->
+      <app-bottom-play (newPlayNew)="mChangeSongCondition($event)" [blLoaded]="loadNew"></app-bottom-play>
+   </div>
 
- <div class="bottom">
-    <app-bottom-play (newPlayNew)="mChangeSongCondition($event)" [blLoaded]="loadNew" [songLink]="songAudio"></app-bottom-play>
- </div>
+</div>
+
  

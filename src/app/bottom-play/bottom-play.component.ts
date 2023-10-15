@@ -18,18 +18,26 @@ export class BottomPlayComponent implements OnChanges{
   constructor(private songsSer: PassSongServiceService){}
 
   // @Input() songLink? = "https://d288.d2mefast.net/tb/e/50/meek_mill_ft._nicki_minaj_chris_brown_all_eyes_on_you_official_video_mp3_54445.mp3?play";
-  @Input() songLink? = ''
-  @Input() blLoaded = true;
+  // @Input() songLink? = ''
+  @Input() blLoaded?:boolean;
   @Output() newPlayNew = new EventEmitter<boolean>();
+
+  selectedSong:any = {path:""}
   // aud?:any;
 
   ngOnChanges(){
+    
+    this.songsSer.mShowLoadedSong().subscribe(song => {
+      this.selectedSong = song
+    });
+
     if(this.blLoaded){
       this.mPlayOrPause();
     }
 
   }
-  aud = new Audio(this.songLink);
+
+  aud = new Audio(this.selectedSong.path);
   AudioDuration = "00:00";
    audD = 0;
 
@@ -85,7 +93,8 @@ export class BottomPlayComponent implements OnChanges{
 
   mPlayOrPause(){
 
-    if(this.blLoaded) {
+    if(this.blLoaded) 
+    {
       
       clearInterval(this.time);
       this.songCondition = false;
@@ -93,10 +102,10 @@ export class BottomPlayComponent implements OnChanges{
       this.count = 0;
       this.cur = "00";
 
-      this.blLoaded = false;
+      // this.blLoaded = false;
       this.newPlayNew.emit(false);
       this.aud.load();
-      this.aud = new Audio(this.songLink);
+      this.aud = new Audio(this.selectedSong.path);
       this.songCondition = false;
     }
     
@@ -210,20 +219,20 @@ export class BottomPlayComponent implements OnChanges{
 
   }
 
-  loadSong(event:any){
-    const selectedFile = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(selectedFile);
+  // loadSong(event:any){
+  //   const selectedFile = event.target.files[0];
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(selectedFile);
 
-    reader.onload = async (event:any) => {
-      console.log(event.target.result);
-      // const track: Track = {
-      //   name: selectedFile.name,
-      //   path: 
-      // }
-    }
+  //   reader.onload = async (event:any) => {
+  //     console.log(event.target.result);
+  //     // const track: Track = {
+  //     //   name: selectedFile.name,
+  //     //   path: 
+  //     // }
+  //   }
 
-  }
+  // }
 
   
   
