@@ -1,5 +1,4 @@
 import { Component, OnChanges, Input, OnInit } from '@angular/core';
-import WaveSurfer from 'wavesurfer.js';
 
 import { PassSongServiceService } from '../pass-song-service.service';
 

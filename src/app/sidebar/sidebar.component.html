@@ -1,4 +1,12 @@
 <div #side class="sidebar-div">
+    <div class="top-menu">
+        <label>Songs</label>
+        <div class="btn-upload">
+            <mat-icon>cloud_upload</mat-icon>
+            <input type="file" accept="audio/*" (change)= "loadSong($event)">
+        </div>
+
+    </div>
 
     <div *ngFor="let song of my_playlist">
         <div class="song-item" (click)="mSelectedSong(song)">
@@ -10,11 +18,6 @@
             </div>
         </div>
         <hr>
-    </div>
-    
-    <div class="btn-upload">
-        <mat-icon>cloud_upload</mat-icon>
-        <input type="file" accept="audio/*" (change)= "loadSong($event)">
     </div>
 </div>
 
