@@ -3,10 +3,9 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-
-export class PlaylistService {
-  private dbName = 'playlistDB';
-  private storeName = 'tracks';
+export class FavoriteService {
+  private dbName = 'favoritesDB';
+  private storeName = 'favorites';
   
   constructor() {
     this.initializeDatabase();
@@ -38,7 +37,7 @@ export class PlaylistService {
     });
   }
 
-  async saveTrack(track: { name: string, path: string, image: string }) {
+  async saveFavorite(track: { name: string, path: string, image: string }) {
     const db = await this.openDatabase();
     const transaction = db.transaction([this.storeName], 'readwrite');
     const store = transaction.objectStore(this.storeName);
@@ -48,17 +47,7 @@ export class PlaylistService {
     };
   }
 
-  async deleteTrack(id: number): Promise<void> {
-    const db = await this.openDatabase();
-    const transaction = db.transaction([this.storeName], 'readwrite');
-    const store = transaction.objectStore(this.storeName);
-    store.delete(id);
-    transaction.oncomplete = () => {
-      db.close();
-    };
-  }
-
-  async getTracks(): Promise<{ name: string, path: string }[]> {
+  async getFavorite(): Promise<{ name: string, path: string }[]> {
     const db = await this.openDatabase();
     const transaction = db.transaction([this.storeName], 'readonly');
     const store = transaction.objectStore(this.storeName);

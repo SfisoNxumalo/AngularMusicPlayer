@@ -59,6 +59,7 @@ export class SidebarComponent implements OnInit, OnChanges {
       const track  = {
         name: selectedFile.name,
         path: event.target.result,
+        liked:false,
         image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjHaF-Os2eIoblm4ZVHpD6Segb0qd7kC5MvJuMu4CtPQqIz-MQODzbjAOi2LOFxDB3uSY&usqp=CAU"
       };
 

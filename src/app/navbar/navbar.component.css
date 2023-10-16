@@ -266,7 +266,7 @@ label{
 }
 
 
-.local-div, .online-div{
+.local-div, .online-div, .favorites-div{
   display: flex;
   flex-direction: row;
   flex-basis: 50%;
@@ -275,7 +275,7 @@ label{
   border-radius: 10px 10px 0 0;
 }
 
-.local-div:hover, .online-div:hover{
+.local-div:hover, .online-div:hover, .favorites-div{
   background-color: rgb(214, 214, 214);
   border-radius: 10px 10px 0 0;
 }

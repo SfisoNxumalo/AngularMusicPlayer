@@ -15,6 +15,7 @@ import { SongsComponent } from './songs/songs.component';
 import { LocalPLayerComponent } from './local-player/local-player.component';
 import { OnlinePLayerComponent } from './online-player/online-player.component';
 import { PlaylistComponent } from './playlist/playlist.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 
 
@@ -28,7 +29,8 @@ import { PlaylistComponent } from './playlist/playlist.component';
     SongsComponent,
     LocalPLayerComponent,
     OnlinePLayerComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,

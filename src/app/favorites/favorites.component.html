@@ -1,0 +1,14 @@
+<div #side class="favorites-div">
+
+    <div *ngFor="let song of my_favorites">
+        <div class="song-item" (click)="mSelectedSong(song)">
+            <img src="{{song.image}}">
+
+            <div class="track-title">
+                <label class="s-artist">{{trimSongText(song.name)}}</label>
+                <!-- <label class="s-title">{{song.title}}</label> -->
+            </div>
+        </div>
+        <hr>
+    </div>
+    

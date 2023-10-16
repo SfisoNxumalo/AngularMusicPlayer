@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angu
 import { AudioService } from '../audio.service';
 
 import { PassSongServiceService } from '../pass-song-service.service';
+import { FavoriteService } from '../favorite.service';
 
 
 const audio_api = "https://localhost:3000/api/songs"
@@ -12,10 +13,15 @@ const audio_api = "https://localhost:3000/api/songs"
   styleUrls: ['./bottom-play.component.css'],
 })
 
-export class BottomPlayComponent implements OnChanges{
+export class BottomPlayComponent implements OnInit{
 
   song$?:any;
-  constructor(private songsSer: PassSongServiceService){}
+  liked = false
+  my_favorites!: any[];
+  constructor(private favService: FavoriteService ,private songsSer: PassSongServiceService){}
+
+
+
 
   // @Input() songLink? = "https://d288.d2mefast.net/tb/e/50/meek_mill_ft._nicki_minaj_chris_brown_all_eyes_on_you_official_video_mp3_54445.mp3?play";
   // @Input() songLink? = ''
@@ -25,8 +31,18 @@ export class BottomPlayComponent implements OnChanges{
   selectedSong:any = {path:""}
   // aud?:any;
 
+  ngOnInit(): void {
+    this.getFavorites()
+   //console.log( "bdvbdvdgvdvgdgd", this.my_favorites)
+    this.my_favorites.forEach((song)=>{
+      if(song.liked == true){
+        this.favIco = "favorite";
+        this.heartClass = "heart"
+      }
+    })
+  }
   ngOnChanges(){
-    
+
     this.songsSer.mShowLoadedSong().subscribe(song => {
       this.selectedSong = song
     });
@@ -34,8 +50,9 @@ export class BottomPlayComponent implements OnChanges{
     if(this.blLoaded){
       this.mPlayOrPause();
     }
-
+    this.favService.getFavorite()
   }
+
 
   aud = new Audio(this.selectedSong.path);
   AudioDuration = "00:00";
@@ -207,20 +224,42 @@ export class BottomPlayComponent implements OnChanges{
   favIco = "favorite_border"
 
   mFavourite(){
-
-    if(!this.FavouriteSong){
+    if(this.selectedSong){
+      this.selectedSong.liked = true;
       this.favIco = "favorite";
-      this.FavouriteSong = true;
       this.heartClass = "heart"
-
-    }
-    else{
+      this.favService.saveFavorite(this.selectedSong)
+    }else{
       this.favIco = "favorite_border";
-      this.FavouriteSong = false;
+      this.selectedSong.liked = false;
       this.heartClass = "";
-
+    
+      return
     }
 
+
+    // if(!this.FavouriteSong){
+    //   this.favIco = "favorite";
+    //   this.FavouriteSong = true;
+    //   this.heartClass = "heart"
+    //   this.favService.saveFavorite(this.selectedSong)
+      
+    // }
+    // else{
+    //   this.favIco = "favorite_border";
+    //   this.FavouriteSong = false;
+    //   this.heartClass = "";
+
+    // }
+
+  }
+
+  getFavorites(){
+    console.log("gdgdgdgdgdgdgd")
+    this.favService.getFavorite().then((values)=>{
+      this.my_favorites = values
+      console.log("gdggdgagdg", values)
+    })
   }
 
   // loadSong(event:any){

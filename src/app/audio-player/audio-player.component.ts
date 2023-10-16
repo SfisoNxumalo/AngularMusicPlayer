@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AudioService } from '../audio.service';
 
 @Component({
@@ -7,9 +7,18 @@ import { AudioService } from '../audio.service';
   templateUrl: './audio-player.component.html',
   styleUrls: ['./audio-player.component.css']
 })
-export class AudioPlayerComponent {
+export class AudioPlayerComponent implements OnInit {
 
+  name = "String"
   constructor(private audioService : AudioService){}
+  
+  
+  ngOnInit(): void {
+   
+   console.log(this.name, "Hey")
+  }
+
+  
 
     playAudio(url: string )
     {
