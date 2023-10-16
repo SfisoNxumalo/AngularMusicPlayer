@@ -193,6 +193,7 @@ export class BottomPlayComponent implements OnInit{
           this.cur = "00";
           this.ACTimeM = "00"
           this.ACTimeS = "00"
+          this.songsSer.sendSongCod(false);
         }
 
         let curr = audio.currentTime.toFixed(0);

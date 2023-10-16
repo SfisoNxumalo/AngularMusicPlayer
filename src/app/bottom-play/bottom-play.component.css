@@ -53,7 +53,9 @@ mat-icon{
     padding: 0px 40px;
     
 }
-
+.delete{
+    position: absolute;
+}
 mat-slider{
     width: 100%;
 }
