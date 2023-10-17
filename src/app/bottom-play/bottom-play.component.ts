@@ -20,9 +20,6 @@ export class BottomPlayComponent implements OnInit{
   my_favorites!: any[];
   constructor(private favService: FavoriteService ,private songsSer: PassSongServiceService){}
 
-
-
-
   // @Input() songLink? = "https://d288.d2mefast.net/tb/e/50/meek_mill_ft._nicki_minaj_chris_brown_all_eyes_on_you_official_video_mp3_54445.mp3?play";
   // @Input() songLink? = ''
   @Input() blLoaded?:boolean;
@@ -41,11 +38,34 @@ export class BottomPlayComponent implements OnInit{
       }
     })
   }
+
   ngOnChanges(){
 
     this.songsSer.mShowLoadedSong().subscribe(song => {
-      this.selectedSong = song
+
+        // alert(this.selectedSong.name)
+      
+        if(!this.selectedSong.name){
+          clearInterval(this.time);
+          this.songCondition = false;
+          this.songCon = "play_arrow";
+          this.count = 0;
+          this.cur = "00";
+          this.ACTimeM = "00"
+          this.ACTimeS = "00"
+          this.songsSer.sendSongCod(false);
+          this.audD = 0
+          this.AudioDuration = "00:00";
+        }
+
+        this.selectedSong = song
+      
     });
+
+    // this.songsSer.mShowLoadedSong().subscribe(song => {
+    //   this.selectedSong = song
+    //   alert(song.id)
+    // });
 
     if(this.blLoaded){
       this.mPlayOrPause();
@@ -194,6 +214,7 @@ export class BottomPlayComponent implements OnInit{
           this.ACTimeM = "00"
           this.ACTimeS = "00"
           this.songsSer.sendSongCod(false);
+          this.audD = 0
         }
 
         let curr = audio.currentTime.toFixed(0);

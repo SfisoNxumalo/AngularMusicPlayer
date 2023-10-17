@@ -9,15 +9,21 @@
     </div>
 
     <div *ngFor="let song of my_playlist">
-        <div class="song-item" (click)="mSelectedSong(song)">
-            <img src="{{song.image}}">
+        <div class="so" id="so">
+            <div class="song-item" (click)="mSelectedSong(song)">
+                        <img src="{{song.image}}">
 
-            <div class="track-title">
-                <label class="s-artist">{{trimSongText(song.name)}}</label>
-                <!-- <label class="s-title">{{song.title}}</label> -->
-            </div>
-            
+                        <div class="track-title">
+                            <label class="s-artist">{{trimSongText(song.name)}}</label>
+                            <!-- <label class="s-title">{{song.title}}</label> -->
+                        </div>
+                    
+                    </div>
+                    <div class="divDelete" (click)="mDeletedSong(song)">
+                        <mat-icon id="mat-icon">delete</mat-icon>
+                    </div>
         </div>
+         
         <hr>
     </div>
 </div>

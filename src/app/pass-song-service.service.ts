@@ -27,4 +27,8 @@ export class PassSongServiceService {
   mShowSongCod(){
     return this.imageController;
   }
+
+  mClearPlay(){
+    this.songData = new BehaviorSubject<any>({});
+  }
 }
